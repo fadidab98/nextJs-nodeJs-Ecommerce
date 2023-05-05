@@ -11,9 +11,10 @@ function CheckOut(props) {
   const submitCheckOut=()=>{
     postCheckOut({
      'products': props.products,
-     'user':user.id
+     'user':JSON.parse(user).id,
     }).then((res)=> window.location.href = res.data?.url)
   }
+  console.log(JSON.parse(user).id)
   return (
     <div>
         {/* head */}
