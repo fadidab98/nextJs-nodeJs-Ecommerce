@@ -1,0 +1,379 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Apr 13, 2023 at 10:00 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.0.25
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `nodeapi`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `user_id`, `product_id`, `quantity`) VALUES
+(125, 11, 3, 1),
+(126, 11, 4, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL,
+  `category_title` varchar(100) NOT NULL,
+  `category_meta_title` varchar(100) NOT NULL,
+  `category_description` text NOT NULL,
+  `category_meta_description` text NOT NULL,
+  `status` enum('0','1') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `category_title`, `category_meta_title`, `category_description`, `category_meta_description`, `status`) VALUES
+(1, 'mobile', 'mobile', 'A mobile phone is a wireless handheld device that allows users to make and receive calls. While the earliest generation of mobile phones could only make and receive calls, today’s mobile phones do a lot more, accommodating web browsers, games, cameras, video players and navigational systems.\r\n\r\nAlso, while mobile phones used to be mainly known as “cell phones” or cellular phones, today’s mobile phones are more commonly called “smartphones” because of all of the extra voice and data services that they offer.', '9', '1'),
+(2, 'computer', 'computer', 'A mobile phone is a wireless handheld device that allows users to make and receive calls. While the earliest generation of mobile phones could only make and receive calls, today’s mobile phones do a lot more, accommodating web browsers, games, cameras, video players and navigational systems.\r\n\r\nAlso, while mobile phones used to be mainly known as “cell phones” or cellular phones, today’s mobile phones are more commonly called “smartphones” because of all of the extra voice and data services that they offer.', 'A mobile phone is a wireless handheld device that allows users to make and receive calls. While the earliest generation of mobile phones could only make and receive calls, today’s mobile phones do a lot more, accommodating web browsers, games, cameras, video players and navigational systems.\n', '1'),
+(39, 'adsdsad', 'dasdasdsadasd', 'asdsadasdsadasdasdas', 'sadasdasdsadsadsadasdsad', ''),
+(40, 'dasdasdasd', 'asdasdasdasd', 'sdsadasdasdasd', 'asdasdsadsadasdsad', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `permissions`
+--
+
+CREATE TABLE `permissions` (
+  `id` int(50) NOT NULL,
+  `name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `permissions`
+--
+
+INSERT INTO `permissions` (`id`, `name`) VALUES
+(2, 'show-product'),
+(4, 'delete-product'),
+(6, 'view-products'),
+(8, 'create-product'),
+(10, 'view-category'),
+(11, 'edit-category'),
+(12, 'delete-category'),
+(13, 'create-category'),
+(14, 'view-categories'),
+(15, 'edit-product'),
+(16, 'view-users'),
+(17, 'view-user'),
+(18, 'edit-user'),
+(19, 'create-user'),
+(20, 'delete-user');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL,
+  `product_title` varchar(100) NOT NULL,
+  `product_meta_title` varchar(100) NOT NULL,
+  `product_description` text NOT NULL,
+  `product_meta_description` text NOT NULL,
+  `quantity` int(10) NOT NULL,
+  `product_price` float NOT NULL,
+  `status` enum('0','1') NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `color` varchar(100) NOT NULL,
+  `product_image` varchar(200) NOT NULL,
+  `product_sub_image` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `product_title`, `product_meta_title`, `product_description`, `product_meta_description`, `quantity`, `product_price`, `status`, `category_id`, `color`, `product_image`, `product_sub_image`) VALUES
+(3, 'Samsung A22', 'Samsung A22', 'An API, or application programming interface, is a set of pre-prepared coding instructions that third-party apps can subsume into their designs. These coding instructions provide third-party apps with pre-prepared functions, relieving developers of the responsibility to code in those functions from scratch. A mobile app development API is just an API meant to assist programmers in setting up mobile apps and providing them with various features.', 'An API, or application programming interface, is a set of pre-prepared coding instructions that third-party apps can subsume into their designs. These coding instructions provide third-party apps with pre-prepared functions, relieving developers of the responsibility to code in those functions from scratch. A mobile app development API is just an API meant to assist programmers in setting up mobile apps and providing them with various features.', 0, 212, '1', 1, 'white', 'sdasd', 'asdasd'),
+(4, 'Samsung A23 New', 'Samsung A23 New', 'An API, or application programming interface, is a set of pre-prepared coding instructions that third-party apps can subsume into their designs. These coding instructions provide third-party apps with pre-prepared functions, relieving developers of the responsibility to code in those functions from scratch. A mobile app development API is just an API meant to assist programmers in setting up mobile apps and providing them with various features.', 'An API, or application programming interface, is a set of pre-prepared coding instructions that third-party apps can subsume into their designs. These coding instructions provide third-party apps with pre-prepared functions, relieving developers of the responsibility to code in those functions from scratch. A mobile app development API is just an API meant to assist programmers in setting up mobile apps and providing them with various features.', 0, 212, '1', 1, 'white', 'sdasd', 'asdasd'),
+(5, 'Samsung A24', 'Samsung A24', 'An API, or application programming interface, is a set of pre-prepared coding instructions that third-party apps can subsume into their designs. These coding instructions provide third-party apps with pre-prepared functions, relieving developers of the responsibility to code in those functions from scratch. A mobile app development API is just an API meant to assist programmers in setting up mobile apps and providing them with various features.', 'An API, or application programming interface, is a set of pre-prepared coding instructions that third-party apps can subsume into their designs. These coding instructions provide third-party apps with pre-prepared functions, relieving developers of the responsibility to code in those functions from scratch. A mobile app development API is just an API meant to assist programmers in setting up mobile apps and providing them with various features.', 0, 212, '1', 1, 'white', 'sdasd', 'asdasd'),
+(6, 'Samsung A25', 'Samsung A25', 'An API, or application programming interface, is a set of pre-prepared coding instructions that third-party apps can subsume into their designs. These coding instructions provide third-party apps with pre-prepared functions, relieving developers of the responsibility to code in those functions from scratch. A mobile app development API is just an API meant to assist programmers in setting up mobile apps and providing them with various features.', 'An API, or application programming interface, is a set of pre-prepared coding instructions that third-party apps can subsume into their designs. These coding instructions provide third-party apps with pre-prepared functions, relieving developers of the responsibility to code in those functions from scratch. A mobile app development API is just an API meant to assist programmers in setting up mobile apps and providing them with various features.', 111, 222, '1', 1, 'white', 'sdsad', 'sdsdsd'),
+(8, 'Samsung A25', 'Samsung A25', 'An API, or application programming interface, is a set of pre-prepared coding instructions that third-party apps can subsume into their designs. These coding instructions provide third-party apps with pre-prepared functions, relieving developers of the responsibility to code in those functions from scratch. A mobile app development API is just an API meant to assist programmers in setting up mobile apps and providing them with various features.', 'An API, or application programming interface, is a set of pre-prepared coding instructions that third-party apps can subsume into their designs. These coding instructions provide third-party apps with pre-prepared functions, relieving developers of the responsibility to code in those functions from scratch. A mobile app development API is just an API meant to assist programmers in setting up mobile apps and providing them with various features.', 111, 222, '1', 1, 'white', 'sdsad', 'sdsdsd'),
+(9, 'Samsung A25', 'Samsung A25', 'An API, or application programming interface, is a set of pre-prepared coding instructions that third-party apps can subsume into their designs. These coding instructions provide third-party apps with pre-prepared functions, relieving developers of the responsibility to code in those functions from scratch. A mobile app development API is just an API meant to assist programmers in setting up mobile apps and providing them with various features.', 'An API, or application programming interface, is a set of pre-prepared coding instructions that third-party apps can subsume into their designs. These coding instructions provide third-party apps with pre-prepared functions, relieving developers of the responsibility to code in those functions from scratch. A mobile app development API is just an API meant to assist programmers in setting up mobile apps and providing them with various features.', 111, 222, '1', 1, 'white', 'sdsad', 'sdsdsd'),
+(10, 'Samsung A25', 'Samsung A25', 'An API, or application programming interface, is a set of pre-prepared coding instructions that third-party apps can subsume into their designs. These coding instructions provide third-party apps with pre-prepared functions, relieving developers of the responsibility to code in those functions from scratch. A mobile app development API is just an API meant to assist programmers in setting up mobile apps and providing them with various features.', 'An API, or application programming interface, is a set of pre-prepared coding instructions that third-party apps can subsume into their designs. These coding instructions provide third-party apps with pre-prepared functions, relieving developers of the responsibility to code in those functions from scratch. A mobile app development API is just an API meant to assist programmers in setting up mobile apps and providing them with various features.', 111, 222, '1', 1, 'white', 'sdsad', 'sdsdsd'),
+(11, 'Samsung A25', 'Samsung A25', 'An API, or application programming interface, is a set of pre-prepared coding instructions that third-party apps can subsume into their designs. These coding instructions provide third-party apps with pre-prepared functions, relieving developers of the responsibility to code in those functions from scratch. A mobile app development API is just an API meant to assist programmers in setting up mobile apps and providing them with various features.', 'An API, or application programming interface, is a set of pre-prepared coding instructions that third-party apps can subsume into their designs. These coding instructions provide third-party apps with pre-prepared functions, relieving developers of the responsibility to code in those functions from scratch. A mobile app development API is just an API meant to assist programmers in setting up mobile apps and providing them with various features.', 111, 222, '1', 1, 'white', 'sdsad', 'sdsdsd'),
+(12, 'Samsung A25', 'Samsung A25', 'An API, or application programming interface, is a set of pre-prepared coding instructions that third-party apps can subsume into their designs. These coding instructions provide third-party apps with pre-prepared functions, relieving developers of the responsibility to code in those functions from scratch. A mobile app development API is just an API meant to assist programmers in setting up mobile apps and providing them with various features.', 'An API, or application programming interface, is a set of pre-prepared coding instructions that third-party apps can subsume into their designs. These coding instructions provide third-party apps with pre-prepared functions, relieving developers of the responsibility to code in those functions from scratch. A mobile app development API is just an API meant to assist programmers in setting up mobile apps and providing them with various features.', 111, 222, '1', 1, 'white', 'sdsad', 'sdsdsd'),
+(13, 'Samsung A25', 'Samsung A25', 'An API, or application programming interface, is a set of pre-prepared coding instructions that third-party apps can subsume into their designs. These coding instructions provide third-party apps with pre-prepared functions, relieving developers of the responsibility to code in those functions from scratch. A mobile app development API is just an API meant to assist programmers in setting up mobile apps and providing them with various features.', 'An API, or application programming interface, is a set of pre-prepared coding instructions that third-party apps can subsume into their designs. These coding instructions provide third-party apps with pre-prepared functions, relieving developers of the responsibility to code in those functions from scratch. A mobile app development API is just an API meant to assist programmers in setting up mobile apps and providing them with various features.', 111, 222, '1', 1, 'white', 'sdsad', 'sdsdsd'),
+(14, 'Samsung A25', 'Samsung A25', 'An API, or application programming interface, is a set of pre-prepared coding instructions that third-party apps can subsume into their designs. These coding instructions provide third-party apps with pre-prepared functions, relieving developers of the responsibility to code in those functions from scratch. A mobile app development API is just an API meant to assist programmers in setting up mobile apps and providing them with various features.', 'An API, or application programming interface, is a set of pre-prepared coding instructions that third-party apps can subsume into their designs. These coding instructions provide third-party apps with pre-prepared functions, relieving developers of the responsibility to code in those functions from scratch. A mobile app development API is just an API meant to assist programmers in setting up mobile apps and providing them with various features.', 111, 222, '1', 1, 'white', 'sdsad', 'sdsdsd'),
+(84, 'saAsaSAsASAsadas', 'adddddddddddddddddd', 'saddddddddddddsaddsa', 'daaaaaaaaaaaaaaaaaad', 1, 1, '1', 1, 'red', '\"https://res.cloudinary.com/dg2c3liap/image/upload/v1681413767/gjsvugpwa2d6a72g6kgd.jpg\"', '[\"https://res.cloudinary.com/dg2c3liap/image/upload/v1681413768/owbsq5gp2bpermvdycqd.jpg\",\"https://res.cloudinary.com/dg2c3liap/image/upload/v1681413769/zzbgxtlsefnhnd4vyypd.jpg\"]'),
+(85, 'daaaaaaaaaaaa', 'adddddddddddddddddd', 'daaaaaaaaaaaaa', 'daaaaaaaaaaaaaaaaa', 1, 1, '1', 1, 'red', 'https://res.cloudinary.com/dg2c3liap/image/upload/v1681414344/h5hczskhpzkndudu8s5a.jpg', '[\"https://res.cloudinary.com/dg2c3liap/image/upload/v1681414345/czy2imyvemfz5kxagjdk.jpg\",\"https://res.cloudinary.com/dg2c3liap/image/upload/v1681414346/hmg7ydsxcwmdlccc19mj.jpg\"]');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` int(50) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `permission_id` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `user_id`, `permission_id`) VALUES
+(2, 11, 2),
+(4, 11, 4),
+(5, 11, 6),
+(8, 11, 13),
+(9, 11, 12),
+(10, 11, 11),
+(11, 11, 14),
+(12, 11, 10),
+(13, 11, 8),
+(14, 11, 15),
+(20, 11, 19),
+(21, 11, 20),
+(22, 11, 18),
+(23, 11, 17),
+(24, 11, 16),
+(25, 11, 16),
+(26, 11, 6),
+(27, 11, 13),
+(29, 11, 17),
+(30, 11, 17),
+(90, 61, 2),
+(91, 61, 6),
+(92, 61, 15),
+(93, 62, 2),
+(94, 62, 4),
+(95, 62, 15),
+(96, 62, 6),
+(118, 16, 2),
+(119, 16, 6),
+(155, 64, 4),
+(156, 64, 6),
+(157, 64, 11),
+(158, 64, 2),
+(159, 64, 15),
+(169, 67, 2),
+(170, 67, 6),
+(171, 67, 8);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `role` enum('0','1') NOT NULL,
+  `password` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `role`, `password`) VALUES
+(11, 'admin2', 'admin2@gmail.com', '1', '$2a$10$CeKyN7kTJViX2WMPIKh0deq5diurlA7eKWR/8H/wk9I'),
+(13, 'dwdwadwd', 'wadwadwd@gmail.com', '0', '$2a$10$HWmKO0mTbNWKAfdkylHcHu2OLyhi1pl/MAxTUnNy7nF'),
+(14, 'fadidab19dasdw', 'fadidab19dasdw@gmail.com', '1', '$2a$10$KztIVFZSvHZw3fQap5yDaeC1WgNRpVWZttrVoNQ6OVj'),
+(16, 'admin2', 'admin3@gmail.com', '1', '$2a$10$FbEyQvaNpYEmwFFR6g.x5.tDvg5ANzIVTkz77Rvi2aS'),
+(61, 'fadiadmin', 'fadidamin@admin.com', '', '$2a$10$fQZsOfrmo4EkYEVNxSr.qOGq8ErkYz.nbRgfQTdt2bX'),
+(62, 'fadi', 'fadidab@gmail.com', '1', '$2a$10$hzfk1Yy.1rdsDN./P5ePFu/zFNIf2bmMA2hhkGzCt/a'),
+(64, 'adminahmad', 'adminahmad@gmail.com', '1', '$2a$10$8y8VIwmyUs8Yp5UiI5XJBOdTPanbOyYOM/PIsbKytaE'),
+(65, '', '', '1', '$2a$10$ZhTQlxXZZzOz9LQGwrNEw.FwLqg1QWLnIYYUPMJHXJi'),
+(66, 'dsadsadsd', 'asdasd@gmail.com', '1', '$2a$10$UJzbgdOam84JtooFuqzca.iXbtRvMLyGAISnb4kZJ0I'),
+(67, 'hanna', 'hanna@gmail.com', '1', '$2a$10$3RRn0J6zdxKP3MQR3.JirO4/b7cm33nern.hGepBXUx');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `usertoken`
+--
+
+CREATE TABLE `usertoken` (
+  `id` int(11) NOT NULL,
+  `token` text NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `usertoken`
+--
+
+INSERT INTO `usertoken` (`id`, `token`, `user_id`) VALUES
+(890, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjIsInJvbGUiOiIxIiwicGVybWlzc2lvbiI6WyJ2aWV3LXByb2R1Y3QiLCJkZWxldGUtcHJvZHVjdCIsImVkaXQtcHJvZHVjdCIsInZpZXctcHJvZHVjdHMiXSwiaWF0IjoxNjc5MzcyMjczLCJleHAiOjE2Nzk1NDUwNzN9.L_vrZR-kS7WNBSgFU9k_x0Kc7d4YeeacInRWnRttPYw', 62),
+(1187, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjcsInJvbGUiOiIxIiwicGVybWlzc2lvbiI6WyJzaG93LXByb2R1Y3QiLCJ2aWV3LXByb2R1Y3RzIiwiY3JlYXRlLXByb2R1Y3QiXSwiaWF0IjoxNjgwMDE3OTk4LCJleHAiOjE2ODAxOTA3OTh9.7ZS12_4HG72HSHnYTZDa5CoTxxAocSe9anl9b9c23NI', 67),
+(1741, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInJvbGUiOiIxIiwicGVybWlzc2lvbiI6WyJzaG93LXByb2R1Y3QiLCJkZWxldGUtcHJvZHVjdCIsInZpZXctcHJvZHVjdHMiLCJjcmVhdGUtY2F0ZWdvcnkiLCJkZWxldGUtY2F0ZWdvcnkiLCJlZGl0LWNhdGVnb3J5Iiwidmlldy1jYXRlZ29yaWVzIiwidmlldy1jYXRlZ29yeSIsImNyZWF0ZS1wcm9kdWN0IiwiZWRpdC1wcm9kdWN0IiwiY3JlYXRlLXVzZXIiLCJkZWxldGUtdXNlciIsImVkaXQtdXNlciIsInZpZXctdXNlciIsInZpZXctdXNlcnMiLCJ2aWV3LXVzZXJzIiwidmlldy1wcm9kdWN0cyIsImNyZWF0ZS1jYXRlZ29yeSIsInZpZXctdXNlciIsInZpZXctdXNlciJdLCJpYXQiOjE2ODE0MTU5NTgsImV4cCI6MTY4MTU4ODc1OH0.x_2hQnvM1_xTzJaO7m-8OG9jIAeJIO86gEPdtijc760', 11);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `permissions`
+--
+ALTER TABLE `permissions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `category_id` (`category_id`);
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `permission_id` (`permission_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `usertoken`
+--
+ALTER TABLE `usertoken`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
+-- AUTO_INCREMENT for table `permissions`
+--
+ALTER TABLE `permissions`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+
+--
+-- AUTO_INCREMENT for table `usertoken`
+--
+ALTER TABLE `usertoken`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1742;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `roles`
+--
+ALTER TABLE `roles`
+  ADD CONSTRAINT `roles_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `roles_ibfk_2` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `usertoken`
+--
+ALTER TABLE `usertoken`
+  ADD CONSTRAINT `usertoken_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

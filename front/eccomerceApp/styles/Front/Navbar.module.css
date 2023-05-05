@@ -1,0 +1,97 @@
+
+.fatherDrop .dropdown{
+    position:absolute;
+    top:100%;
+    left:-0.8rem;
+    width: 0px ;
+    height: 0px;
+    display: none;
+
+}
+.fatherDrop:hover .dropdown{
+  
+    display: block;
+    
+
+   background-color:  rgb(7 89 133);
+
+ 
+    width: auto;
+    height: auto;
+
+}
+.fatherMdLinks li{
+    position: relative;
+    
+    
+
+}
+.fatherMdLinks li::after{
+    position: absolute;
+    content: '';
+    left:0.031rem;
+    top:0;
+    bottom: 0;
+    background-color:  rgb(14 165 233);
+    width:0.3rem;
+    border-radius: 0.2rem 0 0 0.2rem; 
+    
+}
+.fatherMdLinks li:hover div{
+    display: block!important;
+
+}
+@media only screen and (max-width:  768px) {
+    .fatherDrop .dropdown{
+     display: none;
+    
+    }
+    .fatherDrop:hover .dropdown{
+        display: none;
+   
+    }
+    .dropdown  li{
+        display: none;
+     
+     }
+  }
+
+
+
+.dropdown  li{
+   position: relative;
+   width: 8rem;
+}
+.dropdown  li a{
+display: block;
+padding: 0.7rem;
+   margin: 0px;
+    
+
+}
+.dropdown  li span::after{
+    content: '';
+    position: absolute;
+    left:0;
+    top:0;
+    bottom: 0;
+    background-color:  rgb(14 165 233);
+    width: 0.34rem;
+    transition: 0.2s;
+
+}
+.dropdown  li:hover span::after{
+    
+    width: 0.5rem;
+    
+}
+.dropdown  li:hover{
+    padding-left: 0.2rem;
+    
+}
+
+
+/* md */
+
+/* sm */
+@media (max-width: 640px) {  }

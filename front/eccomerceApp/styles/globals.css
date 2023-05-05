@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.mastertran {
+    animation: fadeInAnimation ease 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
+}
+ 
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+     }
+}
+.bgLoading{
+    position: fixed  ;
+    left:0;
+    top:0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    min-height:100vh;
+    background-color: rgba(12, 74, 110, 0.452);
+     z-index: 100;
+     height: 90vh;
+}
+.bgLoading div img{
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
