@@ -2,6 +2,7 @@ import express from 'express'
 import { checkAuth, login, logout, refresh, register } from '../controllers/auth.js';
 import auth from '../middleware/auth-middleware.js';
 const router = express.Router();
+/* login,register,refresh ,logout,check auth routes */
 router.post('/register',register);
 
 router.get('/auth',auth,checkAuth);

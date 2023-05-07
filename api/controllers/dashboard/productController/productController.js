@@ -10,7 +10,7 @@ cloudinary.v2.config({
   api_key:'195745443437264',
   api_secret:'XzlRSZl_H2DaGio9H9Xj3HOS8Wc'
 });
-
+/* Product Controller  */
 
 export const index =(req,res)=>{
 

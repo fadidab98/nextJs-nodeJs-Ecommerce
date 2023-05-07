@@ -2,6 +2,7 @@ import Joi from "joi"
 
 const validator =(schema)=>(payload)=> schema.validate(payload,{abortEarly:false});
 
+/* Edit Category Validator */
 
 const  editCategorySchema = Joi.object({
     category_title: Joi.string().min(3).max(30).required(),

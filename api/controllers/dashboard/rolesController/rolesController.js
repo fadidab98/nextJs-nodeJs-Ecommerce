@@ -1,6 +1,6 @@
 
 import {db} from '../../../db/db.js';
-
+/*  roles  controller*/
 export const index =(req,res)=>{
     let q = "SELECT * FROM roles ";
 

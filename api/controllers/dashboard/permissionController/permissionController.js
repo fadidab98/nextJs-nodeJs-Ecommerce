@@ -1,5 +1,6 @@
 
 import {db} from '../../../db/db.js';
+/* Permission Controller */
 
 export const index =(req,res)=>{
     let q = "SELECT * FROM permissions";

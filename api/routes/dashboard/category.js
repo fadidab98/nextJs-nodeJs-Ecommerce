@@ -7,7 +7,7 @@ import checkPer from '../../middleware/permission-middleware.js';
 
 const router = express.Router();
 
-
+/* Dashboard: category routes */
 router.get('/category',[auth,checkAdmin,checkPer('view-categories')],index);
 router.get('/category/routes',routes);
 router.get('/category/show/:id',[auth,checkAdmin,checkPer('view-category')],show)

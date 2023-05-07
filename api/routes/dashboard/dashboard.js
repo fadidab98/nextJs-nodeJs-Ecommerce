@@ -6,6 +6,7 @@ import checkAdmin from '../../middleware/checkAdmin.js';
 
 const router = express.Router();
 
+/* Dashboard: home page routes    i'll do it latter */
 
 router.get('/checkAdmin',[auth,checkAdmin],check);
 

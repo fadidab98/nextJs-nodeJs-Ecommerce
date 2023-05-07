@@ -7,6 +7,7 @@ import checkPer from '../../middleware/permission-middleware.js';
 
 
 const router = express.Router();
+/* Dashboard:  permission routes */
 
 
 router.get('/permissions',[auth,checkAdmin],index) //checkPer("show-permissions")

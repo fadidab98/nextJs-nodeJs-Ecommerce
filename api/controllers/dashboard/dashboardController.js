@@ -1,7 +1,7 @@
 import { db } from "../../db/db.js";
 
 
-
+/* Dashboard Controller */
 
 
 export const check =(req,res)=>{

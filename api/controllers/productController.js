@@ -1,10 +1,10 @@
 import {db} from '../db/db.js';
-
+/* FrontEnd : product controller  */
 export const create=(req,res)=>{
 
 }
 
-export const edite=(req,res)=>{
+export const edit=(req,res)=>{
 
 }
 /* Show All Products BY Category Id */

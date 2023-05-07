@@ -1,5 +1,6 @@
 import { db } from "../../../db/db.js";
 import bcrypt from 'bcryptjs';
+/* User Controller  */
 export const index =(req,res)=>{
 
     try{

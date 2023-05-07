@@ -1,7 +1,8 @@
 import { db } from "../db/db.js";
 
 
-
+/* FrontEnd: cart controller */
+/* show */
 export const index=(req,res)=>{
     let q= "SELECT products.*,cart.quantity,cart.id AS categoryId FROM cart INNER JOIN products ON products.id = cart.product_id WHERE  cart.user_id = ?"
    console.log('userId From cart ', req.userId)
@@ -13,6 +14,7 @@ export const index=(req,res)=>{
   
 }
 
+/* add to cart */
 
 export const add=(req,res)=>{
     let q = "SELECT * from products WHERE id=? " //find product
@@ -43,6 +45,8 @@ export const add=(req,res)=>{
     
 
 }
+/* Delete From cart */
+
 export const destroy=(req,res)=>{
     let q = "SELECT * FROM products WHERE id=?"; //check product
     console.log(req.body)
@@ -62,7 +66,7 @@ export const destroy=(req,res)=>{
    
 
 }
-
+/* Number of Products in Cart */
 export const count=(req,res)=>{
     
     let q = "SELECT  product_id FROM cart WHERE user_id= ?";

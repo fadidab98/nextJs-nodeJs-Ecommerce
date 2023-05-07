@@ -7,6 +7,7 @@ import checkPer from '../../middleware/permission-middleware.js';
 const ALLOED_FORMATS = ['image/jpeg','image/png','image/jpg'];
 
 const router = express.Router();
+/* Dashboard:  Product routes  */
 
 console.log('route')
 router.get('/products',[auth,checkAdmin,checkPer("view-products")],index);

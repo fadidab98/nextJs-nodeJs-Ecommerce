@@ -3,7 +3,7 @@ import { db } from "../../../db/db.js";
  import validateAddCategory from './validation/validation.js';
  import validateEditCategory from './validation/editValidation.js'
 
-
+/* category Controller */
 export const index =(req,res)=>{
 
     try{

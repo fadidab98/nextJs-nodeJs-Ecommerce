@@ -2,7 +2,8 @@ import {db} from '../db/db.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import validationAddUser from './registerValidation.js';
-import validationLoginUser from './loginValidation.js'
+import validationLoginUser from './loginValidation.js';
+/* auth controller  (register,login,checkauth,refresh token,logout) */
 export const register=(req,res)=>{
     
     const {error}=validationAddUser(req.body)
