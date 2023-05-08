@@ -14,6 +14,7 @@ import { dashCategoryApi } from './dataApi/dashboard/categoryApi';
 import { usersDashApi } from './dataApi/dashboard/usersApi';
 import { dashProductApi } from './dataApi/dashboard/productApi';
 import { permissionApi } from './dataApi/dashboard/permissionApi';
+import { dashOrderApi } from './dataApi/dashboard/orderApi';
 
 let store
 
@@ -27,6 +28,7 @@ const reducer =combineReducers({
   [usersDashApi.reducerPath]:usersDashApi.reducer,
   [dashProductApi.reducerPath]:dashProductApi.reducer,
   [permissionApi.reducerPath]:permissionApi.reducer,
+  [dashOrderApi.reducerPath]:dashOrderApi.reducer,
   setting:setting,
   users:users,
   counter:counter,
@@ -41,7 +43,7 @@ function initStore(preloadedState = initialState) {
    preloadedState,
    
   
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([productApi.middleware,cartApi.middleware,dashboardApi.middleware,dashCategoryApi.middleware,usersDashApi.middleware,dashProductApi.middleware,permissionApi.middleware]),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([productApi.middleware,cartApi.middleware,dashboardApi.middleware,dashCategoryApi.middleware,usersDashApi.middleware,dashProductApi.middleware,permissionApi.middleware,dashOrderApi.middleware]),
 
   });
 }

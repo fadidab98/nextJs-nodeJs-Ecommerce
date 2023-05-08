@@ -8,7 +8,7 @@ import usersDashApi from './routes/dashboard/users.js'
 import productDashApi from './routes/dashboard/products.js'
 import stripe from './routes/checkOut.js'
 import permissionDashApi from './routes/dashboard/permission.js'
-
+import orderApi from "./routes/dashboard/order.js"
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import compression from 'compression';
@@ -45,6 +45,8 @@ app.use('/api/cart',cartApi);
 app.use('/api',dashboardApi);
 app.use('/api/dashboard',categoryDashApi);
 /* users Routes */
+/* Dashboard: order routes */
+app.use('/api/dashboard',orderApi)
 app.use('/api/dashboard',usersDashApi);
 /* users Routes  End*/
 /* permissions route */
