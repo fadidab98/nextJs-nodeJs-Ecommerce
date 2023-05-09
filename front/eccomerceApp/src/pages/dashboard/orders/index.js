@@ -6,8 +6,11 @@ import { initializeStore } from '@/store/store'
 import { getCookies, setCookie } from 'cookies-next'
 import React from 'react'
 import Pagination from '@/components/Layouts/FrontEnd/Pagination/Pagination'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 function index(props) {
+  const router = useRouter();
   const data1 =[{title:'Amount'},{title:'Status'},{title:'Order '},{title:'Customer'},{title:'Date'}]
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric"}
@@ -31,7 +34,8 @@ function index(props) {
         </thead>
         <tbody>
             {props.data.data?.map(data=>{
-               return <tr key={data.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+               return <tr onClick={()=>router.push(`/dashboard/orders/show/${data.id}`)} key={data.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 hover:cursor-pointer">
+
                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {data.total}
                 </th>
@@ -51,6 +55,7 @@ function index(props) {
                     {permissions.indexOf("view-category") !== -1 ?(<Link className=" p-2 rounded-md bg-sky-800 text-md text-white mx-1" href={`/dashboard/categories/show/${data.id}`} >Show</Link>):('')}
                     {permissions.indexOf("view-category") !== -1 ?(<button onClick={()=>{ destroyCategory({id:data.id}).then(()=>router.replace(router.asPath))}}  className=" p-2 rounded-md bg-red-800 text-md text-white mx-1"  >Delete</button >):('')} </div>
                 </td> */}
+                
             </tr>
             })}
          
