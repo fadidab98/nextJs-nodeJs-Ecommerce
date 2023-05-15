@@ -46,7 +46,7 @@ app.use('/api',dashboardApi);
 app.use('/api/dashboard',categoryDashApi);
 /* users Routes */
 /* Dashboard: order routes */
-app.use('/api/dashboard',orderApi)
+app.use('/api/dashboard/orders',orderApi)
 app.use('/api/dashboard',usersDashApi);
 /* users Routes  End*/
 /* permissions route */

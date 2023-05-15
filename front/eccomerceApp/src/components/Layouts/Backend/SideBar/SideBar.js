@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-import {FaDashcube} from 'react-icons/fa';
+import {FaClipboardList, FaDashcube} from 'react-icons/fa';
 import {FiUsers} from 'react-icons/fi';
 import {BiCategory} from 'react-icons/bi';
 import {MdProductionQuantityLimits,MdKeyboardArrowDown} from 'react-icons/md'
@@ -11,7 +11,9 @@ const SideBar =()=>{
     const [toggle ,setToggle] =useState({
         users:false,
         categories:false,
-        products:false
+        products:false,
+        orders:false,
+        setting:false
     });
     const togglered = useSelector(state=>state.setting.setting.dashToggle)
 
@@ -73,6 +75,32 @@ const SideBar =()=>{
         <ul className={`${!toggle.products?' hidden ':'flex '} ${togglered? ' absolute  left-20 top-4 bg-sky-900 rounded-md flex flex-col w-40 ':'  flex-col w-full bg-sky-900 rounded-md' } z-20 `}>
           {permissions.indexOf('view-products') !== -1 ? (<li className=" border-b-2  border-sky-700 "><Link href="/dashboard/products"  className={`${togglered? 'text-md px-5': ' px-10 '} block  py-2`}>Products List</Link>  </li>):('')}
           {permissions.indexOf('create-product') !== -1 ? (<li className={` ${togglered?'':' border-b-2  border-sky-700'}`}><Link href="/dashboard/products/create_product" className={`${togglered? 'text-md px-5': ' px-10 '} block  py-2`}>Create Product</Link>  </li>):('')} 
+
+        </ul>
+        </>
+        ):('')} 
+       </div>
+       <div className="relative">
+       {permissions.indexOf('view-orders') !== -1 ?(
+         <>
+        <li className={`w-full  bg-sky-800 rounded-md my-2   py-1 flex justify-between  items-center ${togglered? 'pl-2' :'px-5'}`}>
+        <div  className="flex items-center"><span className=" mr-2"><FaClipboardList/></span><span className={`${togglered?'hidden':''}`}>Orders</span>   </div><button onClick={()=>setToggle({orders:!toggle.orders})} className="text-2xl float-right flex h-auto items-center px-3  m-0"><MdKeyboardArrowDown/></button >
+        </li>
+        <ul className={`${!toggle.orders?' hidden ':'flex '} ${togglered? ' absolute  left-20 top-4 bg-sky-900 rounded-md flex flex-col w-40 ':'  flex-col w-full bg-sky-900 rounded-md' } z-20 `}>
+          {permissions.indexOf('view-orders') !== -1 ? (<li className=" border-b-2  border-sky-700 "><Link href="/dashboard/orders"  className={`${togglered? 'text-md px-5': ' px-10 '} block  py-2`}>Orders List</Link>  </li>):('')}
+
+        </ul>
+        </>
+        ):('')} 
+       </div>
+       <div className="relative">
+       {permissions.indexOf('view-orders') !== -1 ?(
+         <>
+        <li className={`w-full  bg-sky-800 rounded-md my-2   py-1 flex justify-between  items-center ${togglered? 'pl-2' :'px-5'}`}>
+        <div  className="flex items-center"><span className=" mr-2"><FaClipboardList/></span><span className={`${togglered?'hidden':''}`}>Setting</span>   </div><button onClick={()=>setToggle({setting:!toggle.setting})} className="text-2xl float-right flex h-auto items-center px-3  m-0"><MdKeyboardArrowDown/></button >
+        </li>
+        <ul className={`${!toggle.setting?' hidden ':'flex '} ${togglered? ' absolute  left-20 top-4 bg-sky-900 rounded-md flex flex-col w-40 ':'  flex-col w-full bg-sky-900 rounded-md' } z-20 `}>
+          {permissions.indexOf('view-orders') !== -1 ? (<li className=" border-b-2  border-sky-700 "><Link href="/dashboard/orders"  className={`${togglered? 'text-md px-5': ' px-10 '} block  py-2`}>Setting</Link>  </li>):('')}
 
         </ul>
         </>

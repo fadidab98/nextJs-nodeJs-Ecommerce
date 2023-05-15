@@ -26,10 +26,8 @@ function index(props) {
                 {data1.map(head=>{
                     return <th key={Math.random()} scope="col" className="px-6 py-3">
                             {head.title}
-                        </th>
+                       </th>
                 })}
-                
-               
             </tr>
         </thead>
         <tbody>

@@ -84,13 +84,14 @@ if(eventType == 'checkout.session.completed')
   stripe.customers.retrieve(data.customer).then((customer)=>{
     console.log('customer',customer);
     console.log('data:',data)
-    let q = "INSERT INTO orders (order_id,user_id,products,total,subtotal,delivery_status,payment_status) VALUES (?)"
+    let q = "INSERT INTO orders (order_id,user_id,products,total,subtotal,status,delivery_status,payment_status) VALUES (?)"
   const values = {
     order_id:data.id,
     user_id:customer.metadata.userId,
     products:customer.metadata.cart,
     total:data.amount_total,
     subtotal:data.amount_subtotal,
+    status:data.status,
     delivery_status:'pending',
     payment_status:data.payment_status,
     
@@ -98,10 +99,24 @@ if(eventType == 'checkout.session.completed')
   console.log('values',values)
   db.query(q,[Object.values(values)],(error,result)=>{
     if(error) return res.json(error)
-    return console.log('data in db :',result)
+    let q1 = "INSERT INTO order_details(orderId,phone,payment_method,country,currency) VALUES (?)"
+    const values1 = {
+      orderId:result.insertId,
+      phone:data.customer_details.phone,
+      payment_method:JSON.stringify(data.payment_method_types),
+      country:data.customer_details.address.country,
+      currency:data.currency,
+    
+    }
+  console.log(values1)
+    db.query(q1,[Object.values(values1)],(error,result)=>{
+      if(error) return res.json(error)
+      return console.log('data in db :',result)
+  
+    })
 
-   
   })
+
   }).catch(err=> console.log(err.message))
 }
   // Handle the event

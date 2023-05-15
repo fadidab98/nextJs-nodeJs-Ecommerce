@@ -25,6 +25,24 @@ export const dashOrderApi = createApi({
       headers:{Cookie:cookie}})
      
       }),
+      getAllOrderId:builder.query({
+        query:()=>({
+          url:`orders/all_id`,
+
+        })
+      }),
+      getOrderById:builder.query({
+        query:(id)=>({
+          url:`orders/show/${id}`,
+
+        })
+      }),
+      getAllProducts:builder.query({
+        query:(ids)=>({
+          url:`orders/show_products/${ids}`,
+
+        })
+      }),
       updateOrder: builder.mutation({
         query: (patch) =>({
         url: `orders/edit/${patch.id}`,
@@ -44,9 +62,10 @@ export const dashOrderApi = createApi({
 // auto-generated based on the defined endpoints
 export const {
   useGetAllOrderQuery,
- 
+  useGetAllOrderIdQuery,
  useUpdateOrderMutation,
- 
+ useGetOrderByIdQuery,
+ useGetAllProductsQuery,
   util: { getRunningQueriesThunk  },
 } = dashOrderApi;
-export const {getAllOrder,updateOrder}= dashOrderApi.endpoints;
+export const {getAllOrder,updateOrder,getAllOrderId,getOrderById,getAllProducts}= dashOrderApi.endpoints;
